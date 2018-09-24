@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="teamie">
+<head>
+  <title>Teamie Angular App</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css">    
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation-flex.min.css">   
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./app/css/style.css">
+ 
+   
+    <script src="./libs/jquery-2.1.0.min.js"></script> 
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular-resource.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-datepicker/2.1.23/angular-datepicker.min.js"></script>
+
+    <script src="./libs/jquery.isotope.js"></script>
+    <script src="./libs/angular-isotope.js"></script>
+ 
+  <script src="./app/app.module.js"></script>
+  <script src="./app/app.config.js"></script>
+   <script src="./app/follower-list/follower-list.module.js"></script>
+  <script src="./app/follower-list/follower-list.component.js"></script> 
+  <script src="./app/follower-list/follower-list.service.js"></script>
+
+ 
+<style type="text/css">
+  
+  [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+</style>
+  
+</head>
+
+<body ng-cloak style="margin-top:50px;">
+
+	<follower-list></follower-list>
+	
+
+	
+</body>
+</html>

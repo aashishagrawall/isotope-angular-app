@@ -1,0 +1,178 @@
+<style type="text/css">
+.wrapper{
+	background: white;
+	padding: 5px;
+	box-shadow: 11px 7px 112px -13px rgba(133,119,133,1);
+	margin: 10px;
+	border-radius: 2px;
+	cursor: pointer;
+}
+.wrapper:hover{
+	background: white;
+	padding: 5px;
+	box-shadow: 11px 7px 112px -13px rgba(133,119,133,1);
+	margin: 10px;
+	border-radius: 2px;
+	cursor: pointer;
+	transform: scale(1.03);
+}
+.remove-button{
+	background: red;
+	padding: 5px 10px;
+	border-radius: 2px;
+	color: white;
+}
+
+
+
+</style>
+<style type="text/css">
+
+.wrapper-filter{
+	border:1px solid black;
+
+	background: white;
+	border-radius: 2px;
+	box-shadow: 11px 7px 112px -13px rgba(133,119,133,1);
+
+}
+.filter{
+	cursor: pointer;
+	border-right: 1px solid black;
+	padding: 8px 0;
+}
+.filter:last-child{
+	cursor: pointer;
+	border-right: none;
+	padding: 8px 0;
+}
+.go-button{
+	background: green;
+	color: white;
+
+}
+</style>
+
+<div class="filters">
+	<div class="row">
+		<div class="columns medium-8 medium-centered">
+			<h5>SortBy</h5>
+			<div class="wrapper-filter">
+				<div class="row medium-up-4" opt-kind ok-key="sortBy"> 
+
+					<button ng-show="currentlyActive.total.asc" type="button" class="columns text-center filter" ok-sel="[total]" ok-type="integer"  ng-click="changeSorting('total')">Twubric Score <i ng-if="currentlyActive.total.asc" class="fas fa-sort-up " style="vertical-align: -webkit-baseline-middle"></i></button>	
+					<button ng-show="!currentlyActive.total.asc" type="button" class="columns text-center filter" ok-sel="[total]" ok-type="integer" opt-ascending="false" ng-click="changeSorting('total')">Twubric Score <i  class="fas fa-sort-down " style="vertical-align: -webkit-baseline-middle"></i></button>
+
+					<button ng-show="currentlyActive.friends.asc" type="button" class="columns text-center filter" ok-sel="[friends]" ok-type="integer"  ng-click="changeSorting('friends')">Friends<i class="fas fa-sort-up " style="vertical-align: -webkit-baseline-middle"></i></button>	
+					<button ng-show="!currentlyActive.friends.asc" type="button" class="columns text-center filter" ok-sel="[friends]" ok-type="integer" opt-ascending="false" ng-click="changeSorting('friends')">Friends<i  class="fas fa-sort-down " style="vertical-align: -webkit-baseline-middle"></i></button>
+
+					<button ng-show="currentlyActive.influence.asc" type="button" class="columns text-center filter" ok-sel="[influence]" ok-type="integer"  ng-click="changeSorting('influence')">Infuencee<i ng-if="currentlyActive.influence.asc" class="fas fa-sort-up " style="vertical-align: -webkit-baseline-middle"></i></button>	
+					<button ng-show="!currentlyActive.influence.asc" type="button" class="columns text-center filter" ok-sel="[influence]" ok-type="integer" opt-ascending="false" ng-click="changeSorting('influence')">Influence<i  class="fas fa-sort-down " style="vertical-align: -webkit-baseline-middle"></i></button>
+
+					<button ng-show="currentlyActive.chirpiness.asc" type="button" class="columns text-center filter" ok-sel="[chirpiness]" ok-type="integer"  ng-click="changeSorting('chirpiness')">Chirpiness <i ng-if="currentlyActive.chirpiness.asc" class="fas fa-sort-up " style="vertical-align: -webkit-baseline-middle"></i></button>	
+					<button ng-show="!currentlyActive.chirpiness.asc" type="button" class="columns text-center filter" ok-sel="[chirpiness]" ok-type="integer" opt-ascending="false" ng-click="changeSorting('chirpiness')">Chirpiness <i  class="fas fa-sort-down " style="vertical-align: -webkit-baseline-middle"></i></button>
+
+					
+
+				</div>
+			</div>
+			
+		</div>
+
+		
+	</div>
+
+</div>
+<div class="filters">
+	<div class="row">
+		<div class="columns medium-8 medium-centered">
+			<h5>Date</h5>
+			<div class="wrapper-filter">
+				<div class="row medium-up-3"> 
+					<div class="columns">
+
+						<datepicker date-min-limit="{{::current_date}}" date-format="MMMM d, y">
+							<input ng-model="date.from" class="datepicker " placeholder="Date and Month" type="text">
+						</datepicker>
+					</div>
+					<div class="columns">
+						<datepicker date-min-limit="{{::current_date}}" date-format="MMMM d, y">
+							<input ng-model="date.to" class=" datepicker " placeholder="Date and Month" type="text">
+						</datepicker>
+					</div>
+					<div class="columns"> 
+						<div type="button" class="columns text-center filter go-button" ng-click="filterDate()">Go</div>
+
+
+
+					</div>
+				</div>
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+
+
+	<div class="row medium-up-3"  isotope-container id="isotopeContainer">
+
+		<div class="columns" ng-repeat="follower in totalList" isotope-item >
+			<div class="wrapper">
+				<div class="row">
+					<div class="columns medium-8">
+
+						<img src="{{follower.image}}" width="20px" height="20px">
+
+						
+
+						<span style="font-weight: bold;"> &nbsp; {{follower.username}}</span>
+						
+					</div>
+
+					<div class="columns medium-4 text-right" total="{{follower.twubric.total}}">
+						{{follower.twubric.total}}
+
+					</div>
+				</div>
+				<hr style="margin: 10px 0 10px 0">
+				<div class="row">
+					<div class="columns medium-4 text-center" style="border-right: 1px solid black">
+						<h6 style="font-weight: bold" friends="{{follower.twubric.friends}}">{{follower.twubric.friends}}</h6>
+						<h6> Friends</h6>
+
+
+					</div>
+					<div class="columns medium-4 text-center" style="border-right: 1px solid black">
+						<h6 style="font-weight: bold;" influence="{{follower.twubric.influence}}">{{follower.twubric.influence}} </h6>
+						<h6> influence</h6>
+					</div>
+					<div class="columns medium-4 text-center">
+						<h6 style="font-weight: bold;" chirpiness="{{follower.twubric.chirpiness}}">{{follower.twubric.chirpiness}}</h6>
+						<h6> chirpiness</h6>
+					</div>
+
+				</div>
+				<hr style="margin: 10px 0 10px 0">
+				<div class="row">
+					<div class="columns medium-6 text-left">
+						<h6 style="font-weight: bold;" date={{follower.join_date}} class="date">{{follower.join_date | date:'MMM d, y'}}</h6>
+
+
+
+					</div>
+					<div class="columns medium-6 text-right">
+						<button class="remove-button" data-holder="{{follower.uid}}" ng-click="removeItem(this)">Remove</button>
+					</div>
+
+
+				</div>
+
+
+
+			</div>
+		</div>
+
+	</div>
